@@ -1,4 +1,4 @@
-using ConsoleApp1;
+using ConsoleApp1TEST;
 
 namespace TestProject1
 {
@@ -14,6 +14,7 @@ namespace TestProject1
             Assert.That(result, Is.True);
         }
 
+        [Test]
         public void Test2()
         {
             bool result = tamere.estStraight(5);
