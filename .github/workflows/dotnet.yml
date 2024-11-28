@@ -39,6 +39,7 @@ jobs:
       issues: write
     steps:
       - uses: actions/checkout@v4
-      - run: gh issue create --title "NTM" --body "DYNAMITE"
+      - run: gh issue create --title "marche po" --body "test passe pas" --add-label "$LABELS"
     env:
       GH_TOKEN: ${{ github.token }}
+      LABELS: Test Failed
