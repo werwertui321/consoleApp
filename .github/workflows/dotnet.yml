@@ -40,4 +40,4 @@ jobs:
     steps:
       - run: gh issue create --title "NTM"
     env:
-    GH_TOKEN: ${{ github.token }}
+      GH_TOKEN: ${{ github.token }}
