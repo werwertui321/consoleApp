@@ -39,7 +39,7 @@ jobs:
       issues: write
     steps:
       - uses: actions/checkout@v4
-      - run: gh issue create --title "marche po" --body "test passe pas" --add-label "$LABELS"
+      - run: gh issue create --title "marche po" --body "test passe pas" --label "$LABELS"
     env:
       GH_TOKEN: ${{ github.token }}
       LABELS: Test Failed
