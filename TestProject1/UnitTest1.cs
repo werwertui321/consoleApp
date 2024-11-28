@@ -11,7 +11,7 @@ namespace TestProject1
         {
             bool result = tamere.estStraight(1);
 
-            Assert.That(result, Is.False);
+            Assert.That(result, Is.True);
         }
 
         [Test]
