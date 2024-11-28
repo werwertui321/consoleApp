@@ -38,9 +38,8 @@ jobs:
     permissions:
       issues: write
     steps:
-      - run: gh issue create "$NUMBER" --add-label "$LABELS"
+      - run: gh issue create "$NUMBER"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
-          LABELS: TEST_FAILED
