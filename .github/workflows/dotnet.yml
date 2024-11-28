@@ -38,6 +38,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - run: gh issue create --title "NTM"
+      - uses: actions/checkout@v4
+      - run: gh issue create --title "NTM" --body "DYNAMITE"
     env:
       GH_TOKEN: ${{ github.token }}
