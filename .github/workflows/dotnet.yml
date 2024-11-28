@@ -5,7 +5,7 @@ name: .NET
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "0 0 * * 6"
 
   push:
     branches: [ "main" ]
@@ -14,7 +14,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  buildnTest:
 
     runs-on: ubuntu-latest
 
@@ -30,3 +30,17 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+  label_issues:
+    needs: buildnTest
+    if: ${{ failure() }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - run: gh issue create "$NUMBER" --add-label "$LABELS"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: TEST_FAILED
